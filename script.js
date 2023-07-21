@@ -1,17 +1,36 @@
 const grid = document.getElementById('grid');
+const text = document.getElementById('textBox');
+const submit = document.getElementById('submitBtn');
+
+submit.addEventListener('click', function(e){
+    if((typeof text.value == 'number') && 
+        (text.value <= 100 && text.value >= 1)){
+        changeGridSize(text.value);
+        console.log('changed');
+    }
+    console.log('clicked');
+})
 
 function createGrid(num){
     for(r = 0; r < num; r++){
-        const row = document.createElement('div');
+        let row = document.createElement('div');
         row.className = 'row';
         for(c = 0; c < num; c++){
-            const square = document.createElement('div');
+            let square = document.createElement('div');
             square.className = 'square';
             square.style.width = squareSize(num);
             square.style.height = squareSize(num);
             row.appendChild(square);
         }
         grid.appendChild(row);
+    }
+}
+
+function removeGrid(){
+    console.log("removed");
+    while(grid.firstChild){
+        grid.removeChild(grid.firstChild);
+        console.log("removed");
     }
 }
 
@@ -25,6 +44,7 @@ function squareSize(num){
 }
 
 function changeGridSize(size){
+    removeGrid();
     createGrid(size);
 }
 
@@ -33,5 +53,3 @@ function colorGrid(){
 }
 
 defaultGrid();
-
-console.log(document.querySelectorAll('div'));
