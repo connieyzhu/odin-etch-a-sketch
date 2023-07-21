@@ -1,6 +1,10 @@
 const grid = document.getElementById('grid');
 const text = document.getElementById('textBox');
 const submit = document.getElementById('submitBtn');
+const black = document.getElementById('black');
+const color = document.getElementById('color');
+
+let colorOn = false;
 
 function createGrid(num){
     for(r = 0; r < num; r++){
@@ -47,16 +51,30 @@ submit.addEventListener('click', function(){
 
 grid.addEventListener('mouseover', function(){
     const hoverList = document.querySelectorAll(":hover");
-    const hoverItem = hoverList.item(hoverList.length-1);
-    hoverItem.style.backgroundColor = 'black';
+    const hoverSquare = hoverList.item(hoverList.length-1);
+    if(colorOn){
+        colorGrid(hoverSquare);
+    }else{
+        blackGrid(hoverSquare);
+    }
 })
 
-function blackGrid(){
-
+function blackGrid(square){
+    square.style.backgroundColor = 'black';
 }
 
-function colorGrid(){
+black.addEventListener('click', function(){
+    colorOn = false;
+})
 
+function colorGrid(square){
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    square.style.backgroundColor = '#' + randomColor;
 }
+
+color.addEventListener('click', function(){
+    console.log('color on');
+    colorOn = true;
+})
 
 defaultGrid();
