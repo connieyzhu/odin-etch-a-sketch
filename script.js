@@ -2,13 +2,6 @@ const grid = document.getElementById('grid');
 const text = document.getElementById('textBox');
 const submit = document.getElementById('submitBtn');
 
-submit.addEventListener('click', function(e){
-    if(!isNaN(text.value) && (text.value <= 100 && text.value >= 1)){
-        changeGridSize(text.value);
-    }
-    console.log(text.value);
-})
-
 function createGrid(num){
     for(r = 0; r < num; r++){
         let row = document.createElement('div');
@@ -43,6 +36,23 @@ function squareSize(num){
 function changeGridSize(size){
     removeGrid();
     createGrid(size);
+}
+
+submit.addEventListener('click', function(){
+    if(!isNaN(text.value) && (text.value <= 100 && text.value >= 1)){
+        changeGridSize(text.value);
+    }
+    console.log(text.value);
+})
+
+grid.addEventListener('mouseover', function(){
+    const hoverList = document.querySelectorAll(":hover");
+    const hoverItem = hoverList.item(hoverList.length-1);
+    hoverItem.style.backgroundColor = 'black';
+})
+
+function blackGrid(){
+
 }
 
 function colorGrid(){
