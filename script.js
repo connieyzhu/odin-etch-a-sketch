@@ -3,12 +3,10 @@ const text = document.getElementById('textBox');
 const submit = document.getElementById('submitBtn');
 
 submit.addEventListener('click', function(e){
-    if((typeof text.value == 'number') && 
-        (text.value <= 100 && text.value >= 1)){
+    if(!isNaN(text.value) && (text.value <= 100 && text.value >= 1)){
         changeGridSize(text.value);
-        console.log('changed');
     }
-    console.log('clicked');
+    console.log(text.value);
 })
 
 function createGrid(num){
@@ -27,7 +25,6 @@ function createGrid(num){
 }
 
 function removeGrid(){
-    console.log("removed");
     while(grid.firstChild){
         grid.removeChild(grid.firstChild);
         console.log("removed");
