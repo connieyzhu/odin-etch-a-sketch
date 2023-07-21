@@ -16,3 +16,10 @@
     border: 1px solid black;
     flex: 1;
 }
+
+#changeGrid{
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+

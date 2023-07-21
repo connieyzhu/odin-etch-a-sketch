@@ -25,7 +25,7 @@ function squareSize(num){
 }
 
 function changeGridSize(size){
-
+    createGrid(size);
 }
 
 function colorGrid(){
